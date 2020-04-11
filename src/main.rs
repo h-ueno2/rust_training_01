@@ -1,34 +1,32 @@
 fn main() {
-    let x = 5;
-    if x == 5 {
-        println!("x is 5");
-    } else {
-        println!("x is not 5");
+    while_sample();
+    for_sample();
+    enumerate_sample();
+}
+
+fn while_sample() {
+    println!("while sample");
+    let mut x = 5;
+    let mut done = false;
+    while !done {
+        x += x - 3;
+        println!("{}", x);
+        if x % 5 == 0 {
+            done = true;
+        }
     }
-
-    let y = if x == 5 {
-        10
-    } else {
-        15
-    };
-    println!("y is {}", y);
-
-    let y = if x == 5 { 10 } else { 15 };
-    println!("y is {}", y);
 }
 
-fn print_number(x: i32) {
-    println!("x is: {}", x);
+fn for_sample() {
+    println!("for sample");
+    for x in 0..10 {
+        println!("{}", x);
+    }
 }
 
-fn print_sum(x: i32, y: i32) {
-    println!("sum is: {}", x + y);
-}
-
-fn add_one(x: i32) -> i32 {
-    x + 1
-}
-
-fn diverges() -> ! {
-    panic!("This function never returns!");
+fn enumerate_sample() {
+    println!("enumerate sample");
+    for (i, j) in (5..10).enumerate() {
+        println!("i = {} and j = {}", i, j);
+    }
 }
