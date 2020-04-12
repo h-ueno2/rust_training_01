@@ -1,25 +1,23 @@
 fn main() {
-    foo();
-    // while_sample();
-    // for_sample();
-    // enumerate_sample();
-
-    let v1 = vec![1, 2, 3];
-    let v2 = vec![1, 2, 3];
-    // `&`を付けると参照
-    let answer = hoge(&v1, &v2);
-    println!("{}", v1[0]);
-
-    println!("イテレータ");
-    let mut v = vec![1, 2, 3];
-    for i in &v {
-        println!("{}", i);
-        v.push(34);
-    }
+    let y = &5;
+    let f = Foo { x: y };
+    println!("{}", f.x());
 }
 
 fn hoge(v1: &Vec<i32>, v2: &Vec<i32>) -> i32 {
     42
+}
+
+struct Foo<'a> {
+    x: &'a i32,
+}
+
+impl<'a> Foo<'a> {
+    fn x(&self) -> &'a i32 { self.x }
+}
+
+fn bar<'a>(x: &'a i32) {
+
 }
 
 fn foo() {
