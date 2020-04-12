@@ -3,6 +3,23 @@ fn main() {
     // while_sample();
     // for_sample();
     // enumerate_sample();
+
+    let v1 = vec![1, 2, 3];
+    let v2 = vec![1, 2, 3];
+    // `&`を付けると参照
+    let answer = hoge(&v1, &v2);
+    println!("{}", v1[0]);
+
+    println!("イテレータ");
+    let mut v = vec![1, 2, 3];
+    for i in &v {
+        println!("{}", i);
+        v.push(34);
+    }
+}
+
+fn hoge(v1: &Vec<i32>, v2: &Vec<i32>) -> i32 {
+    42
 }
 
 fn foo() {
