@@ -1,7 +1,36 @@
 fn main() {
-    while_sample();
-    for_sample();
-    enumerate_sample();
+    foo();
+    // while_sample();
+    // for_sample();
+    // enumerate_sample();
+}
+
+fn foo() {
+    // let v = vec![1, 2, 3];
+    // let v2 = v;
+    // 所有権が移動しているため以下でコンパイルエラー
+    // println!("v[0] is:{}", v[0]);
+
+    let v = 1;
+    let v2 = v;
+    // プリミティブ型はCopyトレイトが実装されているためコンパイルできる
+    println!("v is: {}", v);
+
+    let a = 5;
+    let _y = double(a);
+    println!("{}", a);
+
+    let a = true;
+    let _y = change_truth(a);
+    println!("{}", a);
+}
+
+fn double(x: i32) -> i32 {
+    x * 2
+}
+
+fn change_truth(x: bool) -> bool {
+    !x
 }
 
 fn while_sample() {
