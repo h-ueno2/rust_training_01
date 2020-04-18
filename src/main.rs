@@ -1,7 +1,32 @@
+use std::sync::Arc;
+use std::cell::Cell;
+
 fn main() {
+    let x = Arc::new(5);
+    let y = x.clone();
+
+    // 構造体自体をミュータブルにする。
+    let mut a = Point { x: 5, y: 6 };
+    a.x = 10;
+
+    let b = Point2 { x: 5, y: Cell::new(6) };
+    b.y.set(7);
+    println!("y: {:?}",  b.y);
+
     let y = &5;
     let f = Foo { x: y };
     println!("{}", f.x());
+}
+
+struct Point {
+    x: i32,
+    // mut y: i32, //構造体の一部だけをミュータブルにはできない
+    y: i32,
+}
+
+struct Point2 {
+    x: i32,
+    y: Cell<i32>, // Cell<T>でフィールド単位でミュータブルできる
 }
 
 fn hoge(v1: &Vec<i32>, v2: &Vec<i32>) -> i32 {
