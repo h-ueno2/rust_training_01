@@ -2,26 +2,37 @@ use std::sync::Arc;
 use std::cell::Cell;
 
 fn main() {
-    let x = Arc::new(5);
-    let y = x.clone();
+    let mut origin = Point { x: 0, y: 0};
+    origin.x = 5;
+    println!("The origin is at ({}, {})", origin.x, origin.y);
 
-    // 構造体自体をミュータブルにする。
-    let mut a = Point { x: 5, y: 6 };
-    a.x = 10;
+    // 同じ型であれば、値をコピーできる
+    let mut point = Point3d { x:0, y:0, z:0 };
+    point = Point3d { y: 1, .. point }; 
 
-    let b = Point2 { x: 5, y: Cell::new(6) };
-    b.y.set(7);
-    println!("y: {:?}",  b.y);
+    let length = Inches(10);
 
-    let y = &5;
-    let f = Foo { x: y };
-    println!("{}", f.x());
+    let Inches(integer_length) = length;
+    println!("length is {} inches", integer_length);
+
 }
+
+// タプル構造体
+struct Inches(i32);
+
+// Unit-like構造体：何もメンバを持たない。
+struct Electron;
 
 struct Point {
     x: i32,
     // mut y: i32, //構造体の一部だけをミュータブルにはできない
     y: i32,
+}
+
+struct Point3d {
+    x: i32,
+    y: i32,
+    z: i32,
 }
 
 struct Point2 {
