@@ -1,19 +1,24 @@
-use std::sync::Arc;
-use std::cell::Cell;
 
 fn main() {
-    let x: Message = Message::Move { x: 3, y: 4 };
-    let y: BoardGameTrun = BoardGameTrun::Move { squares: 1 };
+    let x = 5;
+
+    match x {
+        1 => println!("one"),
+        2 => println!("two"),
+        3 => println!("three"),
+        4 => println!("four"),
+        5 => println!("five"),
+        _ => println!("somethig else"),
+    }
+
+    let number = match x {
+        1 => "one",
+        2 => "two",
+        3 => "three",
+        4 => "four",
+        5 => "five",
+        _ => "something else",
+    };
+    println!("{}", number);
 }
 
-enum Message {
-    Quit,
-    ChangeColor(i32, i32, i32).
-    Move { x: i32, y: i32 },
-    Write(String),
-}
-
-enum BoardGameTrun {
-    Move { squares: i32 }.
-    Pass,
-}
